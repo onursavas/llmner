@@ -17,7 +17,7 @@ setup(
         "setuptools>=24.2.0",
     ],
     python_requires=">=3.10",
-    extras_require={"dev": ["ipykernel==6.25.2"]},
+    extras_require={"dev": ["ipykernel>=6.25.2"]},
     classifiers=[
         "Development Status :: 1 - Planning",
         "Intended Audience :: Science/Research",
