@@ -8,7 +8,7 @@ from langchain.prompts import (
 
 from langchain.schema.messages import AIMessage, HumanMessage
 
-from langchain_openai import ChatOpenAI
+from langchain_openai import AzureOpenAI
 
 from llmner.utils import (
     dict_to_enumeration,
@@ -55,8 +55,8 @@ class BaseNer:
 
     def __init__(
         self,
-        model: str = "gpt-3.5-turbo",
-        max_tokens: int = 256,
+        model: str = "gpt-4o",
+        max_tokens: int = 4096,
         stop: List[str] = ["###"],
         temperature: float = 1.0,
         model_kwargs: Dict = {},
@@ -143,7 +143,7 @@ class BaseNer:
             model_kwargs = {}
         else:
             model_kwargs = self.model_kwargs
-        chat = ChatOpenAI(
+        chat = AzureOpenAI(
             model_name=self.model,  # type: ignore
             max_tokens=self.max_tokens,
             temperature=self.temperature,
