@@ -8,7 +8,7 @@ from langchain.prompts import (
 
 from langchain.schema.messages import AIMessage, HumanMessage
 
-from langchain.chat_models import ChatOpenAI
+from langchain_openai import ChatOpenAI
 
 from llmner.utils import (
     dict_to_enumeration,
