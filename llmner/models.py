@@ -8,7 +8,7 @@ from langchain.prompts import (
 
 from langchain.schema.messages import AIMessage, HumanMessage
 
-from langchain_openai import AzureOpenAI
+from langchain_openai import AzureChatOpenAI
 
 from llmner.utils import (
     dict_to_enumeration,
@@ -149,7 +149,7 @@ class BaseNer:
             model_kwargs = {}
         else:
             model_kwargs = self.model_kwargs
-        chat = AzureOpenAI(
+        chat = AzureChatOpenAI(
             model_name=self.model,  # type: ignore
             max_tokens=self.max_tokens,
             temperature=self.temperature,
