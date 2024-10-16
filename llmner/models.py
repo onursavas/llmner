@@ -56,6 +56,9 @@ class BaseNer:
     def __init__(
         self,
         model: str = "gpt-4o",
+        deployment_name: str = "", 
+        azure_endpoint: str = "", 
+        openai_api_key: str = "",
         max_tokens: int = 4096,
         stop: List[str] = ["###"],
         temperature: float = 1.0,
@@ -84,6 +87,9 @@ class BaseNer:
             prompt_template (str, optional): Prompt template to send the llm as the system message. Defaults to a prompt template for NER in English.
             system_message_as_user_message (bool, optional): If True, the system message will be sent as a user message. Defaults to False.
         """
+        self.deployment_name = deployment_name 
+        self.azure_endpoint = azure_endpoint  
+        self.openai_api_key = openai_api_key
         self.max_tokens = max_tokens
         self.stop = stop
         self.model = model
@@ -147,6 +153,10 @@ class BaseNer:
             model_name=self.model,  # type: ignore
             max_tokens=self.max_tokens,
             temperature=self.temperature,
+            openai_api_key=self.openai_api_key,
+            openai_api_version="2024-02-01",
+            azure_endpoint=self.azure_endpoint,
+            deployment_name=self.deployment_name,
             model_kwargs=model_kwargs,
             request_timeout=request_timeout,
         )
